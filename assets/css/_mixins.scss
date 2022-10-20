@@ -1,0 +1,36 @@
+@mixin dark(){
+	&.dark {
+		background-color: $gray-900;
+		color: $white;
+	}
+}
+
+@mixin heading-underline-orange($height: 5px){
+	box-shadow: 0 $height 0 0 $orange-400;
+}
+@mixin heading-underline-red($height: 5px){
+	box-shadow: 0 $height 0 0 $red-400;
+}
+@mixin heading-underline-green($height: 5px){
+	box-shadow: 0 $height 0 0 $green-400;
+}
+
+// breakpoints
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;
+
+
+@mixin sm {
+	@media (max-width: $md) { @content; }
+}
+@mixin md {
+	@media (min-width: $md) { @content; }
+}
+@mixin lg {
+	@media (min-width: $lg) { @content; }
+}
+@mixin xl {
+	@media (min-width: $xl) { @content; }
+}

@@ -1,0 +1,94 @@
+[
+	{
+		"textStyles": [
+			{
+				"title": "H1",
+				"sizes": {
+					"small": 36,
+					"med": 46,
+					"large": 64
+				},
+				"weight": 300,
+				"font": "Lato",
+				"hexCode": "#3b3b3b"
+			},
+			{
+				"title": "H1 subhead",
+				"sizes": {
+					"small": 20,
+					"med": 22,
+					"large": 24
+				},
+				"weight": 400,
+				"font": "Lato",
+				"hexCode": "#575757"
+			},
+			{
+				"title": "H2",
+				"sizes": {
+					"small": 24,
+					"med": 26,
+					"large": 28
+				},
+				"weight": 700,
+				"font": "Lato",
+				"hexCode": "#3b3b3b"
+			},
+			{
+				"title": "H3",
+				"sizes": {
+					"small": 24,
+					"med": 24,
+					"large": 26
+				},
+				"weight": 400,
+				"font": "Lato",
+				"hexCode": "#3b3b3b"
+			},
+			{
+				"title": "H4",
+				"sizes": {
+					"small": 20,
+					"med": 20,
+					"large": 22
+				},
+				"weight": 400,
+				"font": "Lato",
+				"hexCode": "#575757"
+			},
+			{
+				"title": "H5",
+				"sizes": {
+					"small": 18,
+					"med": 18,
+					"large": 18
+				},
+				"weight": 400,
+				"font": "Lato",
+				"hexCode": "#3b3b3b"
+			},
+			{
+				"title": "P",
+				"sizes": {
+					"small": 16,
+					"med": 16,
+					"large": 16
+				},
+				"weight": 400,
+				"font": "Open Sans",
+				"hexCode": "#575757"
+			},
+			{
+				"title": "Primary Button",
+				"sizes": {
+					"small": 18,
+					"med": 20,
+					"large": 22
+				},
+				"weight": 400,
+				"font": "Open Sans",
+				"hexCode": "#3b3b3b"
+			}
+		]
+	}
+]

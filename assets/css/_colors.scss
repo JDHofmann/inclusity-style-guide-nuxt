@@ -1,0 +1,122 @@
+
+$white: #ffffff;
+
+:root {
+	--gray-100: #f8f8f8;
+	--gray-200: #e4e4e4;
+	--gray-300: #cccccc;
+	--gray-400: #b9b9b9;
+	--gray-500: #a6a6a6;
+	--gray-600: #8b8b8b;
+	--gray-700: #707070;
+	--gray-800: #575757;
+	--gray-900: #3b3b3b;
+
+	--orange-100: #ffefe0;
+	--orange-200: #ffe0c1;
+	--orange-300: #ffd0a2;
+	--orange-400: #ffc184;
+	--orange-500: #ffb265;
+	--orange-600: #fda345;
+	--orange-700: #f7941e;
+	--orange-800: #d77a00;
+	--orange-900: #a95400;
+
+	--red-100: #ffe4dd;
+	--red-200: #ffc9bb;
+	--red-300: #fcae9b;
+	--red-400: #f6937b;
+	--red-500: #ee785c;
+	--red-600: #e55a3e;
+	--red-700: #d93820;
+	--red-800: #c2200f;
+	--red-900: #a10000;
+
+	--green-100: #f5f9ea;
+	--green-200: #ebf3d6;
+	--green-300: #e1edc2;
+	--green-400: #d6e8ad;
+	--green-500: #cbe299;
+	--green-600: #c0dc85;
+	--green-700: #b4d670;
+	--green-800: #94b652;
+	--green-900: #658725;
+}
+
+// color gradients created with https://colordesigner.io/gradient-generator
+// for < 700 generate from #ffffff to $color-700 in 8 steps
+// for > 700 generate from #000000 to $color-700 in 15 steps and take 10th for $800 and 13th for $900
+
+$gray-100: var(--gray-100);
+$gray-200: var(--gray-200);
+$gray-300: var(--gray-300);
+$gray-400: var(--gray-400);
+$gray-500: var(--gray-500);
+$gray-600: var(--gray-600);
+$gray-700: var(--gray-700);
+$gray-800: var(--gray-800);
+$gray-900: var(--gray-900);
+
+$orange: #f7941e;
+$orange-100: var(--orange-100);
+$orange-200: var(--orange-200);
+$orange-300: var(--orange-300);
+$orange-400: var(--orange-400);
+$orange-500: var(--orange-500);
+$orange-600: var(--orange-600);
+$orange-700: var(--orange-700);
+$orange-800: var(--orange-800);
+$orange-900: var(--orange-900);
+
+$red: #d93820;
+$red-100: var(--red-100);
+$red-200: var(--red-200);
+$red-300: var(--red-300);
+$red-400: var(--red-400);
+$red-500: var(--red-500);
+$red-600: var(--red-600);
+$red-700: var(--red-700);
+$red-800: var(--red-800);
+$red-900: var(--red-900);
+
+$green: #b4d670;
+$green-100: var(--green-100);
+$green-200: var(--green-200);
+$green-300: var(--green-300);
+$green-400: var(--green-400);
+$green-500: var(--green-500);
+$green-600: var(--green-600);
+$green-700: var(--green-700);
+$green-800: var(--green-800);
+$green-900: var(--green-900);
+
+// auto generated classes concept stolen from here: https://giuliachiola.dev/posts/create-css-classes-dynamically/
+
+@for $i from 1 through 9 {
+	.bg-red-#{$i}00 {
+		background-color: var(--red-#{$i * 100});
+	}
+	.bg-orange-#{$i}00 {
+		background-color: var(--orange-#{$i * 100});
+	}
+	.bg-gray-#{$i}00 {
+		background-color: var(--gray-#{$i * 100});
+	}
+	.bg-green-#{$i}00 {
+		background-color: var(--green-#{$i * 100});
+	}
+}
+.bg-orange {
+	background-color: $orange;
+}
+.bg-red {
+	background-color: $red;
+}
+.bg-green {
+	background-color: $green;
+}
+// secondary colors not yet in use
+$teal: #00AEC4;
+$mustard: #cd9418;
+$marine: #49c8a2;
+
