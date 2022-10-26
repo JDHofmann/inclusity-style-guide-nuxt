@@ -1,9 +1,11 @@
 <template>
 	<div class="accordian">
-		{{ fontSizes }}
-
+		<div class="flex-row-1-1">
+			<p :class="content.class">{{ content.title }}</p>
+			<p :class="content.class" class="dark">{{ content.title }}</p>
+		</div>
 		<details>
-			<summary>touch me</summary>
+			<summary class="accordian-button">Details</summary>
 			<div class="accordian-content">
 				<div class="flex-row-3">
 					<span>small</span>
@@ -11,33 +13,39 @@
 					<span>large</span>
 				</div>
 				<div class="flex-row-3">
-					<span
-						v-for="(item, index) in fontSizes"
-						v-bind:key="index"
-						>{{ item }}</span
-					>
-					<span>36px</span>
-					<span>46px</span>
-					<span>64px</span>
+					<span>{{ content.sizes.small }}</span>
+					<span>{{ content.sizes.med }}</span>
+					<span>{{ content.sizes.large }}</span>
 				</div>
 				<ul>
-					<li>300 weight</li>
-					<li>Lato</li>
-					<li>#3b3b3b</li>
+					<li>{{ content.weight }}</li>
+					<li>{{ content.font }}</li>
+					<li>{{ content.hexCode }}</li>
 				</ul>
 			</div>
 		</details>
-
-		<button class="accordian-show-content">Show Details</button>
-		<button class="accordian-hide-content">Hide Details</button>
 	</div>
 </template>
 
 <script>
 export default {
 	props: {
-		test: String,
-		fontSizes: Array,
+		content: Object,
 	},
 }
 </script>
+
+<style scoped>
+details span.dark {
+	/* height: 1.5em; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+details {
+	padding: 1rem 0;
+}
+.accordian-content {
+	padding-top: 1rem;
+}
+</style>

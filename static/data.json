@@ -1,8 +1,10 @@
 [
 	{
-		"textStyles": [
+		"name": "Headings",
+		"content": [
 			{
-				"title": "H1",
+				"title": "H1 Heading Style",
+				"class": "h1-style",
 				"sizes": {
 					"small": 36,
 					"med": 46,
@@ -13,7 +15,8 @@
 				"hexCode": "#3b3b3b"
 			},
 			{
-				"title": "H1 subhead",
+				"title": "H1 Subhead Heading Style",
+				"class": "h1-subhead-style",
 				"sizes": {
 					"small": 20,
 					"med": 22,
@@ -24,7 +27,8 @@
 				"hexCode": "#575757"
 			},
 			{
-				"title": "H2",
+				"title": "H2 Heading Style",
+				"class": "h2-style ",
 				"sizes": {
 					"small": 24,
 					"med": 26,
@@ -35,7 +39,8 @@
 				"hexCode": "#3b3b3b"
 			},
 			{
-				"title": "H3",
+				"title": "H3 Heading Style",
+				"class": "h3-style ",
 				"sizes": {
 					"small": 24,
 					"med": 24,
@@ -46,7 +51,8 @@
 				"hexCode": "#3b3b3b"
 			},
 			{
-				"title": "H4",
+				"title": "H4 Heading Style",
+				"class": "h4-style",
 				"sizes": {
 					"small": 20,
 					"med": 20,
@@ -57,7 +63,8 @@
 				"hexCode": "#575757"
 			},
 			{
-				"title": "H5",
+				"title": "H5 Heading Style",
+				"class": "h5-style",
 				"sizes": {
 					"small": 18,
 					"med": 18,
@@ -66,9 +73,14 @@
 				"weight": 400,
 				"font": "Lato",
 				"hexCode": "#3b3b3b"
-			},
+			}
+		]
+	},
+	{
+		"name": "Non Headings",
+		"content": [
 			{
-				"title": "P",
+				"title": "P Style",
 				"sizes": {
 					"small": 16,
 					"med": 16,
@@ -79,7 +91,7 @@
 				"hexCode": "#575757"
 			},
 			{
-				"title": "Primary Button",
+				"title": "Primary Button Style",
 				"sizes": {
 					"small": 18,
 					"med": 20,

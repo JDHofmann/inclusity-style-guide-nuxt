@@ -135,54 +135,57 @@
 	</div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .divi-footer-wrapper {
 	padding: 4vmin 2vmin 2vmin;
 	max-width: 800px;
 	margin: auto;
-}
-.divi-footer-wrapper hr {
-	color: #cccac9;
+	.menus {
+		font-family: 'Open Sans', sans-serif;
+		line-height: 1.5em;
+		display: flex;
+		justify-content: space-evenly;
+		h4 {
+			font-size: 18px;
+			color: $gray-900;
+			font-weight: 600;
+		}
+		li {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	}
+	hr {
+		color: #cccac9;
+	}
 }
 .socials {
 	text-align: center;
-}
-.socials img:hover,
-.socials img:focus {
-	outline: 3px solid #808080;
-	outline-offset: 5px;
-	border-radius: 50%;
-}
-.socials img {
-	width: 45px;
-	object-position: center;
-	object-fit: contain;
-	margin: 2vmin 3vmin 0;
-	opacity: 0.395;
+	img {
+		width: 45px;
+		object-position: center;
+		object-fit: contain;
+		margin: 2vmin 3vmin 0;
+		opacity: 0.395;
+	}
+	&:hover,
+	&:focus {
+		outline: 3px solid #808080;
+		outline-offset: 5px;
+		border-radius: 50%;
+	}
 }
 
-.menus {
-	display: flex;
-	justify-content: space-evenly;
-}
-.menus h4 {
-	font-size: 18px !important;
-	font-weight: 600;
-}
-.menus li {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-.sub-menu {
-	margin: 0;
-	padding: 0 !important;
-}
+// .sub-menu {
+// 	margin: 0;
+// 	padding: 0;
+// }
 .sub-menu a,
 .sub-menu li {
-	color: #575757 !important;
+	color: #575757;
 	font-size: 16px;
-	line-height: 24px;
+	line-height: 1.4rem;
 	font-weight: 400;
 	list-style: none;
 }

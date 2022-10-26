@@ -1,3 +1,42 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	line-height: 1.2em;
+}
+h1,
+.h1-style,
+h2,
+.h2-style,
+h3,
+.h3-style,
+h4,
+.h4-style {
+	font-family: 'Lato', sans-serif;
+}
+
+p,
+.p-style,
+li,
+span,
+a {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	color: $gray-800;
+}
+
+p,
+.p-style {
+	@include dark();
+	&:not(h1, .h1-style, h2, .h2-style, h3, .h3-style, h4, .h4-style) {
+		margin-top: 1em;
+	}
+}
+
 a,
 .a-style {
 	cursor: pointer;
@@ -5,4 +44,13 @@ a,
 	margin: inherit;
 	padding: inherit;
 	color: inherit;
+}
+button {
+	cursor: pointer;
+}
+
+li {
+	padding-left: 0.5em;
+	list-style: circle;
+	margin: 1em 1.5em 0;
 }
