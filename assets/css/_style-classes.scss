@@ -140,17 +140,17 @@
 	align-items: center;
 }
 
-.heading-underline-orange {
+.underline-orange {
 	padding-bottom: 10px;
-	@include heading-underline-orange();
+	@include underline-orange();
 }
 
-.heading-underline-red {
+.underline-red {
 	padding-bottom: 10px;
-	@include heading-underline-red();
+	@include underline-red();
 }
 
-.heading-underline-green {
+.underline-green {
 	padding-bottom: 10px;
-	@include heading-underline-green();
+	@include underline-green();
 }

@@ -1,9 +1,19 @@
+@mixin nextElementPadding() {
+	&
+		+ *:not(h1, h2, h3, h4, h5, h6, .h1-style, .h1-subhead-style, .h2-style, .h3-style, .h4-style, .h5-style) {
+		margin-top: 1em;
+	}
+}
+
 h1,
 .h1-style {
 	@include dark();
 	color: $gray-900;
 	font-weight: 300;
-	margin-top: 0.6em;
+	// margin-top: 0.6em;
+	padding-top: 1em;
+	@include nextElementPadding();
+
 	@include sm() {
 		font-size: 36px;
 	}
@@ -37,14 +47,12 @@ h2,
 	color: $gray-900;
 	font-weight: 700;
 	// margin-top: .4em;
-	margin: 1.5em 0;
-	&
-		+ *:not(h1, h2, h3, h4, h5, h6, .h1-style, .h1-subhead-style, .h2-style, .h3-style, .h4-style, .h5-style) {
-		padding-top: 10px;
-	}
-	@include heading-underline-orange();
+	margin: 1.5em 0 0;
+	@include nextElementPadding();
+	box-shadow: none;
 	&.dark {
 		box-shadow: 0 5px 0 0 $orange-500;
+		box-shadow: none;
 	}
 	@include sm() {
 		font-size: 24px;

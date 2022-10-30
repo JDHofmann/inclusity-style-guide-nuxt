@@ -1,6 +1,10 @@
 <template>
 	<div>
-		<StyleGuideHeader />
 		<Nuxt />
 	</div>
 </template>
+<style>
+body {
+	background: none;
+}
+</style>
