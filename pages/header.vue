@@ -3,24 +3,33 @@
 		<header role="banner">
 			<div class="static-content">
 				<img class="logo" src="logo.png" alt="Inclusity" />
-				<button class="show-menu menu-btn">
+				<button
+					aria-haspopup="true"
+					aria-expanded="false"
+					@click="toggleMenu"
+					class="menu-btn"
+					:class="isActive ? 'close-menu' : 'open-menu'"
+				>
 					<span></span>
 					<span></span>
 					<span></span>
 				</button>
-				<button class="hide-menu menu-btn">
+				<!-- <button class="hide-menu menu-btn">
 					<span></span>
 					<span></span>
-				</button>
+				</button> -->
 			</div>
-			<div id="pop-out" class="pop-out-content" role="menu">
+			<div
+				id="pop-out"
+				class="pop-out-content"
+				role="menu"
+				:class="isActive ? 'show-menu-content' : 'hide-menu-content'"
+			>
 				<div class="mask"></div>
 				<nav>
 					<ul class="section-list">
 						<li class="list-item">
-							<h2 class="heading-underline-red">
-								What is Inclusity
-							</h2>
+							<h2>What is Inclusity</h2>
 							<ul class="sub-list sub-list-red">
 								<li>About Us</li>
 								<li>Meet the Team</li>
@@ -29,7 +38,7 @@
 							</ul>
 						</li>
 						<li class="list-item">
-							<h2 class="heading-underline-orange">Services</h2>
+							<h2>Services</h2>
 							<ul class="sub-list sub-list-orange">
 								<li>Online Services</li>
 								<li>Training Programs</li>
@@ -39,7 +48,7 @@
 							</ul>
 						</li>
 						<li class="list-item">
-							<h2 class="heading-underline-green">Contact</h2>
+							<h2>Contact</h2>
 							<ul class="sub-list sub-list-green">
 								<li>
 									<a href="https://www.inclusity.com/contact/"
@@ -73,6 +82,17 @@
 <script>
 export default {
 	layout: 'empty',
+	data() {
+		return {
+			isActive: false,
+		}
+	},
+	methods: {
+		toggleMenu() {
+			this.isActive = !this.isActive
+			return this.isActive
+		},
+	},
 }
 </script>
 <style lang="scss">
@@ -91,26 +111,49 @@ header {
 			height: 40px;
 		}
 		.menu-btn {
-			// border: 1px solid $gray-700;
-			background: $orange-500;
+			border: 1px solid $gray-700;
+			// background: $orange-500;
 			height: 40px;
 			width: 40px;
 			padding: 0.43rem;
 			border-radius: 8px;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-around;
+			// display: flex;
+			// flex-direction: column;
+			// justify-content: space-around;
+			$line-height: 1px;
+			position: relative;
 			span {
 				display: block;
-				height: 2px;
-				width: 100%;
+				height: $line-height;
+				width: 25px;
 				line-height: 0px;
-				// background: $gray-700;
-				background: $white;
+				background: $gray-700;
+				// background: $white;
+				position: absolute;
+				top: 50%;
+				transition: 0.5s ease;
+				&:nth-child(1) {
+					transform: translateY(-8px);
+				}
+				&:nth-child(3) {
+					transform: translateY(8px);
+				}
 			}
-		}
-		.hide-menu {
-			display: none;
+			&.close-menu {
+				background: $red-100;
+				// justify-content: center;
+				span {
+					&:nth-child(1) {
+						transform: rotate(45deg) translate(0);
+					}
+					&:nth-child(2) {
+						opacity: 0;
+					}
+					&:nth-child(3) {
+						transform: rotate(-45deg) translate(0);
+					}
+				}
+			}
 		}
 	}
 }
@@ -119,6 +162,9 @@ header {
 	// display: none;
 	width: 100%;
 	height: 100vh;
+	height: 0;
+	overflow: hidden;
+	transition: 0.5s ease;
 	max-height: calc(100vh - 40px + (2 * 0.65rem) + 2px);
 	top: calc(40px + (2 * 0.65rem) + 2px);
 
@@ -158,7 +204,7 @@ header {
 					}
 				}
 				h2 {
-					padding-left: 1.3rem;
+					padding-left: 1.6rem;
 					// box-shadow: none;
 					// border-bottom: 1px solid $gray-700;
 					// margin: 1.5em 0 0.5em;
@@ -180,35 +226,45 @@ header {
 			}
 			.list-item {
 				padding-bottom: 1em;
+				margin: 0;
 			}
 			.sub-list {
 				// padding-left: 2rem;
 				&.sub-list-red li {
-					background: rgba($red, 0.6);
 					background: $red-400;
 					// border: 1px solid rgba($red, .8)
+					&:hover,
+					&:focus {
+						background: $red-300;
+					}
 				}
 				&.sub-list-orange li {
-					background: rgba($orange, 0.6);
 					background: $orange-400;
 					// border: 1px solid rgba($orange, .8)
+					&:hover,
+					&:focus {
+						background: $orange-300;
+					}
 				}
 				&.sub-list-green li {
-					background: rgba($green, 0.6);
+					background: $green-400;
 					// border: 1px solid rgba($green, .8)
+					&:hover,
+					&:focus {
+						background: $green-200;
+					}
 				}
 				li {
 					padding: 0.5rem 0 0.5rem 1.6rem;
 					margin-top: 5px;
 					border-radius: 5px;
-					&:hover,
-					&:focus {
-						// text-decoration: underline;
-						background: rgba($red, 0.4);
-					}
 				}
 			}
 		}
+	}
+	&.show-menu-content {
+		// display: block;
+		height: 100vh;
 	}
 }
 </style>

@@ -122,14 +122,14 @@
 			<div class="socials footer-item">
 				<a href="https://www.facebook.com/Inclusity"
 					><img
-						alt="instagram"
+						alt="facebook"
 						src="https://www.inclusity.com/wp-content/uploads/2022/09/instagram.png"
 				/></a>
-				<a href="https://www.instagram.com/inclusity.llc/"
+				<!-- <a href="https://www.instagram.com/inclusity.llc/"
 					><img
-						alt="facebook"
+						alt="instagram"
 						src="https://www.inclusity.com/wp-content/uploads/2022/09/facebook.png"
-				/></a>
+				/></a> -->
 				<a href="https://www.linkedin.com/company/inclusity/"
 					><img
 						alt="linkedin"
@@ -137,7 +137,8 @@
 				/></a>
 			</div>
 			<div class="trademark footer-item">
-				<span>© 2021 Inclusity, LLC</span>
+				<!-- can we do this date with code so it's smart? -->
+				<span>© 2022 Inclusity, LLC</span>
 			</div>
 		</div>
 	</div>
