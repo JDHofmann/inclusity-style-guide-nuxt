@@ -25,7 +25,6 @@
 				role="menu"
 				:class="isActive ? 'show-menu-content' : 'hide-menu-content'"
 			>
-				<div class="mask"></div>
 				<nav>
 					<ul class="section-list">
 						<li class="list-item">
@@ -67,8 +66,8 @@
 				</nav>
 			</div>
 		</header>
-		<main style="margin-top: 50px">
-			<div>
+		<main style="margin-top: 100px">
+			<div class="content">
 				<p>
 					Sed ut perspiciatis unde omnis iste natus error sit
 					voluptatem accusantium doloremque laudantium, totam rem
@@ -96,6 +95,7 @@ export default {
 }
 </script>
 <style lang="scss">
+@import 'assets/css/mixins';
 header {
 	// outline: 1px solid #000088;
 	background: $white;
@@ -104,9 +104,12 @@ header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 0.65rem;
-		// box-shadow: 0 2px 0 0 $orange-300;
-		// border-bottom: 1px solid $gray-500;
+		padding: 10px;
+		position: fixed;
+		width: calc(100% - 20px);
+		top: 0;
+		// box-shadow: 0 2px 0 0 $orange-700;
+
 		.logo {
 			height: 40px;
 		}
@@ -117,10 +120,8 @@ header {
 			width: 40px;
 			padding: 0.43rem;
 			border-radius: 8px;
-			// display: flex;
-			// flex-direction: column;
-			// justify-content: space-around;
 			$line-height: 1px;
+			transition: 0.5s ease;
 			position: relative;
 			span {
 				display: block;
@@ -141,7 +142,6 @@ header {
 			}
 			&.close-menu {
 				background: $red-100;
-				// justify-content: center;
 				span {
 					&:nth-child(1) {
 						transform: rotate(45deg) translate(0);
@@ -158,41 +158,53 @@ header {
 	}
 }
 .pop-out-content {
-	position: absolute;
-	// display: none;
+	// alter display property & opacity to show&hide
+	background: $white;
+	display: none;
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	position: fixed;
+	top: 60px;
+	transition: 0.66s ease-in-out;
 	width: 100%;
-	height: 100vh;
-	height: 0;
-	overflow: hidden;
-	transition: 0.5s ease;
-	max-height: calc(100vh - 40px + (2 * 0.65rem) + 2px);
-	top: calc(40px + (2 * 0.65rem) + 2px);
-
-	.mask {
-		position: absolute;
-		background: rgba($gray-900, 0.5);
+	z-index: 100;
+	&:after {
+		background: linear-gradient(90deg, $orange-300, $orange-500);
+		bottom: 0;
+		content: '';
+		display: block;
 		height: 100%;
+		left: 0;
+		opacity: 0.5;
+		position: absolute;
 		width: 100%;
+		z-index: 5;
 	}
 	nav {
 		background: $white;
-		position: absolute;
-		// add margin for larger sizes
-		// margin: 1rem;
+		height: calc(100% - 60px);
+		margin: 10px 0 0;
+		max-height: $lg;
+		overflow: auto;
+		position: relative;
 		width: 100%;
-		height: 100%;
-		// height: calc( 100% - (40px + ( 2 * .65rem) + 5px));
-		// height: calc(100% - 65.8px);
+		z-index: 10;
+		@include md {
+			width: 500px;
+		}
+
 		.section-list {
-			padding: 1.3rem;
-			// outline: 1px solid $red;
+			box-sizing: border-box;
+			max-width: 100%;
+			min-height: 610px;
+			overflow-x: hidden;
+			padding: 20px 0;
 			position: absolute;
-			// med size and up:
-			// top: 50%;
-			left: 50%;
-			width: calc(100% - 2rem);
-			transform: translate(-50%, -50%);
-			transform: translate(-50%);
+			width: 100%;
+			@include md {
+				// width: 300px;
+			}
 			li {
 				list-style-type: none;
 				a {
@@ -205,21 +217,15 @@ header {
 				}
 				h2 {
 					padding-left: 1.6rem;
-					// box-shadow: none;
-					// border-bottom: 1px solid $gray-700;
-					// margin: 1.5em 0 0.5em;
 					margin: 1em 0 0;
 					font-weight: 400;
 					&.heading-underline-orange {
-						// @include heading-underline-orange(2px);
 						box-shadow: none;
 					}
 					&.heading-underline-red {
-						// @include heading-underline-red(2px);
 						box-shadow: none;
 					}
 					&.heading-underline-green {
-						// @include heading-underline-green(2px);
 						box-shadow: none;
 					}
 				}
@@ -263,8 +269,8 @@ header {
 		}
 	}
 	&.show-menu-content {
-		// display: block;
-		height: 100vh;
+		display: block;
+		opacity: 1;
 	}
 }
 </style>
