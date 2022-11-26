@@ -88,8 +88,18 @@ export default {
 	},
 	methods: {
 		toggleMenu() {
-			this.isActive = !this.isActive
-			return this.isActive
+			let popOut = document.getElementById('pop-out')
+			if (this.isActive) {
+				this.isActive = !this.isActive
+				popOut.style.display = 'none'
+				return this.isActive
+			} else {
+				popOut.style.display = 'block'
+				setTimeout(() => {
+					this.isActive = !this.isActive
+					return this.isActive
+				}, '1')
+			}
 		},
 	},
 }
@@ -157,16 +167,20 @@ header {
 		}
 	}
 }
+#pop-out {
+	display: none;
+}
 .pop-out-content {
 	// alter display property & opacity to show&hide
 	background: $white;
-	display: none;
+	// display: block;
 	height: 100%;
 	left: 0;
 	opacity: 0;
 	position: fixed;
 	top: 60px;
-	transition: 0.66s ease-in-out;
+	// transition: 0.66s ease-in-out;
+	transition: transform 0.35s, opacity 0.35s;
 	width: 100%;
 	z-index: 100;
 	&:after {
@@ -183,11 +197,14 @@ header {
 	}
 	nav {
 		background: $white;
+		display: block;
 		height: calc(100% - 60px);
 		margin: 10px 0 0;
 		max-height: $lg;
+		opacity: 0;
 		overflow: auto;
 		position: relative;
+		transition: transform 0.35s, opacity 0.9s;
 		width: 100%;
 		z-index: 10;
 		@include md {
@@ -271,6 +288,9 @@ header {
 	&.show-menu-content {
 		display: block;
 		opacity: 1;
+		nav {
+			opacity: 1;
+		}
 	}
 }
 </style>
