@@ -24,7 +24,7 @@
 				</button>
 				<ul>
 					<li class="menu-section-item">
-						<MenuItem
+						<MenuItem2
 							@toggleSubMenuItem="subMenuActiveItemUpdate"
 							:isActive="subMenuActiveItem === 'what'"
 							name="what"
@@ -35,10 +35,10 @@
 							<li>Meet the Team</li>
 							<li>Our Clients</li>
 							<li>Blog</li>
-						</MenuItem>
+						</MenuItem2>
 					</li>
 					<li class="menu-section-item">
-						<MenuItem
+						<MenuItem2
 							@toggleSubMenuItem="subMenuActiveItemUpdate"
 							:isActive="subMenuActiveItem === 'services'"
 							name="services"
@@ -50,10 +50,10 @@
 							<li>Inclusion Consulting</li>
 							<li>Coaching</li>
 							<li>Presentations</li>
-						</MenuItem>
+						</MenuItem2>
 					</li>
 					<li class="menu-section-item">
-						<MenuItem
+						<MenuItem2
 							@toggleSubMenuItem="subMenuActiveItemUpdate"
 							:isActive="subMenuActiveItem === 'contact'"
 							name="contact"
@@ -71,7 +71,7 @@
 									>Email Us Here</a
 								>
 							</li>
-						</MenuItem>
+						</MenuItem2>
 					</li>
 				</ul>
 			</nav>

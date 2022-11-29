@@ -1,7 +1,13 @@
 <template>
 	<div :class="color" class="menuItem">
 		<div class="submenu-btn-wrapper">
-			<button @click="toggleMenu" class="submenu-btn">
+			<button
+				@click="toggleMenu"
+				class="submenu-btn"
+				:class="
+					isActive ? 'showing-menu-content' : 'hiding-menu-content'
+				"
+			>
 				<span
 					class="h3-style"
 					:class="
@@ -61,15 +67,15 @@ export default {
 	}
 }
 
-.red {
-	@include setColor(red);
-}
-.orange {
-	@include setColor(orange);
-}
-.green {
-	@include setColor(green);
-}
+// .red {
+// 	@include setColor(red);
+// }
+// .orange {
+// 	@include setColor(orange);
+// }
+// .green {
+// 	@include setColor(green);
+// }
 .menuItem {
 	position: relative;
 }
@@ -79,6 +85,7 @@ export default {
 	display: flex;
 	align-items: center;
 	border-radius: 5px;
+	border: 1px solid $gray-900;
 	span.h3-style {
 		text-align: left;
 		margin-top: 0;
@@ -107,48 +114,81 @@ export default {
 	}
 }
 ul {
-	padding-left: 22px;
+	padding: 0 22px;
 }
 li {
 	list-style: none;
 	padding: 5px 20px;
 	margin: 0;
 	margin-top: 5px;
-	border-radius: 5px;
+	// border-radius: 5px;
 	color: $gray-900;
 	// color: #171717;
+	& + li {
+		box-shadow: 0px -1px $gray-900;
+	}
 }
 
 @include sm() {
-	span.h3-style {
-		text-align: left;
-		padding: 0 20px;
-		font-size: 18px;
-		&:before {
-			margin: 0 14px 0 0;
-			vertical-align: middle;
+	.submenu-btn {
+		border: 1px solid $gray-900;
+		span.h3-style {
+			text-align: left;
+			padding: 0 20px;
+			font-size: 18px;
+			&:before {
+				margin: 0 14px 0 0;
+				vertical-align: middle;
+			}
 		}
 	}
 }
 @include md() {
-	span.h3-style {
-		text-align: right;
-		padding: 0 10px;
-		padding: 0 20px;
-		font-size: 18px;
-		&:before {
-			margin: 0 8px 0 0;
-			vertical-align: middle;
+	.submenu-btn {
+		span.h3-style {
+			text-align: right;
+			padding: 0 10px;
+			padding: 0 20px;
+			font-size: 18px;
+			&:before {
+				margin: 0 8px 0 0;
+				vertical-align: middle;
+				// border-color: $white;
+			}
+		}
+		&.showing-menu-content {
+			background: $gray-800;
+			border-bottom: none;
+			border-radius: 5px 5px 0 0;
+			height: 42px;
+			// &:after {
+			// 	content: '';
+			// 	height: 1px;
+			// 	background: #f0f;
+			// 	background: #fff;
+			// 	position: absolute;
+			// 	width: calc(100% - 2px);
+			// 	bottom: -1px;
+			// 	z-index: 5;
+			// }
+			span.h3-style {
+				color: $white;
+				&:before {
+					border-color: $white;
+				}
+			}
 		}
 	}
 	.navigation-dropdown-content {
+		min-width: 100%;
 		position: absolute;
 		// position: relative;
 		right: 0;
 		width: max-content;
 	}
 	ul {
-		padding-left: 0;
+		padding: 0;
+		border: 1px solid $gray-900;
 	}
 	li {
 		text-align: right;
