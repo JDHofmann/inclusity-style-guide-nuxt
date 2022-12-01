@@ -133,7 +133,7 @@ li {
 @include md() {
 	span.h3-style {
 		text-align: right;
-		padding: 0 10px;
+		// padding: 0 10px;
 		padding: 0 20px;
 		font-size: 18px;
 		&:before {
@@ -142,9 +142,14 @@ li {
 		}
 	}
 	.navigation-dropdown-content {
+		background: #ffffff;
+		border-bottom: 5px solid #fff;
+		border-left: 5px solid #fff;
+		border-radius: 5px;
+		border-right: 5px solid #fff;
+		box-shadow: 0 5px 5px 0px $gray-200;
 		position: absolute;
-		// position: relative;
-		right: 0;
+		right: -5px;
 		width: max-content;
 	}
 	ul {

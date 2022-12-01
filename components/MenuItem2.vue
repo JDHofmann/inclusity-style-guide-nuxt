@@ -47,7 +47,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import 'assets/css/mixins';
-
+$x-offset: 10px;
+$y-offset: 10px;
 @mixin setColor($color) {
 	.submenu-btn {
 		background: var(--#{$color}-400);
@@ -67,36 +68,37 @@ export default {
 	}
 }
 
-// .red {
-// 	@include setColor(red);
-// }
-// .orange {
-// 	@include setColor(orange);
-// }
-// .green {
-// 	@include setColor(green);
-// }
 .menuItem {
 	position: relative;
 }
+.submenu-btn-wrapper {
+	// space below open tab
+	&:after {
+		content: '';
+		height: 5px;
+		width: calc(100% - 2px);
+		background: #ffffff;
+		display: block;
+	}
+}
 .submenu-btn {
-	width: 100%;
-	height: 40px;
-	display: flex;
 	align-items: center;
-	border-radius: 5px;
 	border: 1px solid $gray-900;
+	border-radius: 5px;
+	display: flex;
+	height: 40px;
+	width: 100%;
 	span.h3-style {
 		text-align: left;
 		margin-top: 0;
 		color: #171717;
 		&:before {
-			transform: translateY(-2px) rotate(-45deg) scale(1);
-			border-bottom: 1px solid #171717;
-			border-right: 1px solid #171717;
 			content: '';
+			border-bottom: 1px solid $gray-900;
+			border-right: 1px solid $gray-900;
 			display: inline-block;
 			height: 6px;
+			transform: translateY(-2px) rotate(-45deg) scale(1);
 			vertical-align: middle;
 			width: 6px;
 		}
@@ -118,12 +120,10 @@ ul {
 }
 li {
 	list-style: none;
-	padding: 5px 20px;
+	padding: 7.5px 20px;
 	margin: 0;
-	margin-top: 5px;
-	// border-radius: 5px;
+	// margin-top: 5px;
 	color: $gray-900;
-	// color: #171717;
 	& + li {
 		box-shadow: 0px -1px $gray-900;
 	}
@@ -134,7 +134,7 @@ li {
 		border: 1px solid $gray-900;
 		span.h3-style {
 			text-align: left;
-			padding: 0 20px;
+			padding: 0 calc(2 * $y-offset);
 			font-size: 18px;
 			&:before {
 				margin: 0 14px 0 0;
@@ -144,11 +144,12 @@ li {
 	}
 }
 @include md() {
+	$x-offset: 10px;
+	$y-offset: 10px;
 	.submenu-btn {
 		span.h3-style {
 			text-align: right;
-			padding: 0 10px;
-			padding: 0 20px;
+			padding: 0 calc(2 * $y-offset);
 			font-size: 18px;
 			&:before {
 				margin: 0 8px 0 0;
@@ -156,21 +157,11 @@ li {
 				// border-color: $white;
 			}
 		}
+
 		&.showing-menu-content {
 			background: $gray-800;
 			border-bottom: none;
 			border-radius: 5px 5px 0 0;
-			height: 42px;
-			// &:after {
-			// 	content: '';
-			// 	height: 1px;
-			// 	background: #f0f;
-			// 	background: #fff;
-			// 	position: absolute;
-			// 	width: calc(100% - 2px);
-			// 	bottom: -1px;
-			// 	z-index: 5;
-			// }
 			span.h3-style {
 				color: $white;
 				&:before {

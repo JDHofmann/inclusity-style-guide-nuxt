@@ -76,6 +76,19 @@
 				</ul>
 			</nav>
 		</header>
+		<section class="content">
+			<h2>Quick Links</h2>
+			<p><Nuxt-link to="/">Home</Nuxt-link></p>
+		</section>
+		<div class="content">
+			<h2>Demo content</h2>
+			<p>
+				Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+				accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+				quae ab illo inventore veritatis et quasi architecto beatae
+				vitae dicta sunt explicabo.
+			</p>
+		</div>
 	</div>
 </template>
 <script>
@@ -109,30 +122,28 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import 'assets/css/mixins';
-
+$x-offset: 10px;
+$y-offset: 10px;
 header {
 	background: $white;
-	padding: 10px;
-	position: fixed;
+	padding: $x-offset $y-offset;
+	// position: fixed;
 	top: 0;
-	width: calc(100% - 20px);
+	width: calc(100% - calc(2 * $x-offset));
 	.logo {
 		height: 40px;
 	}
 }
 nav {
 	.mobile-menu-btn {
-		// background: $orange-700;
 		border: 1px solid $gray-700;
-		// color: $white;
-		padding: 10px;
+		padding: $x-offset $y-offset;
 		position: absolute;
-		top: 10px;
-		right: 10px;
+		top: $y-offset;
+		right: $x-offset;
 		left: auto;
 
 		border: 1px solid $gray-700;
-		// background: $orange-500;
 		height: 40px;
 		width: 40px;
 		padding: 0.43rem;
@@ -158,12 +169,10 @@ nav {
 	}
 	ul {
 		display: none;
-		padding-top: 10px;
+		padding-top: $y-offset;
 	}
 	&.showing-menu-content {
 		.mobile-menu-btn {
-			// background: $gray-900;
-			// background: $red-100;
 			span {
 				&:nth-child(1) {
 					transform: rotate(45deg) translate(0);
@@ -176,9 +185,6 @@ nav {
 				}
 			}
 		}
-		// ul {
-		// 	display: block;
-		// }
 	}
 	.navigation-dropdown-content {
 		display: none;
@@ -211,8 +217,8 @@ nav {
 		ul {
 			display: flex;
 			position: absolute;
-			top: 10px;
-			right: 10px;
+			top: $y-offset;
+			right: $x-offset;
 			padding-top: 0;
 			.menu-section-item {
 				& + .menu-section-item {
@@ -221,5 +227,9 @@ nav {
 			}
 		}
 	}
+}
+
+.content {
+	// margin-top: 100px;
 }
 </style>

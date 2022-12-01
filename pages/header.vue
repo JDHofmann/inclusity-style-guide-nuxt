@@ -66,7 +66,10 @@
 				</nav>
 			</div>
 		</header>
-		<main style="margin-top: 100px">
+		<section class="content">
+			<p><Nuxt-link to="/">Home</Nuxt-link></p>
+		</section>
+		<main>
 			<div class="content">
 				<p>
 					Sed ut perspiciatis unde omnis iste natus error sit
@@ -104,7 +107,7 @@ export default {
 	},
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import 'assets/css/mixins';
 header {
 	// outline: 1px solid #000088;
@@ -292,5 +295,8 @@ header {
 			opacity: 1;
 		}
 	}
+}
+section.content {
+	margin-top: 100px;
 }
 </style>

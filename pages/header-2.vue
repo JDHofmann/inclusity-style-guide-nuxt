@@ -76,6 +76,19 @@
 				</ul>
 			</nav>
 		</header>
+		<div class="content">
+			<h2>Demo content</h2>
+			<p>
+				Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+				accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+				quae ab illo inventore veritatis et quasi architecto beatae
+				vitae dicta sunt explicabo.
+			</p>
+		</div>
+		<section class="content">
+			<h2>Quick Links</h2>
+			<p><Nuxt-link to="/">Home</Nuxt-link></p>
+		</section>
 	</div>
 </template>
 <script>
@@ -113,7 +126,7 @@ export default {
 header {
 	background: $white;
 	padding: 10px;
-	position: fixed;
+	position: relative;
 	top: 0;
 	width: calc(100% - 20px);
 	.logo {
@@ -126,7 +139,7 @@ nav {
 		border: 1px solid $gray-700;
 		// color: $white;
 		padding: 10px;
-		position: absolute;
+		// position: absolute;
 		top: 10px;
 		right: 10px;
 		left: auto;
@@ -209,6 +222,7 @@ nav {
 			display: none;
 		}
 		ul {
+			// display: block;
 			display: flex;
 			position: absolute;
 			top: 10px;
@@ -222,4 +236,7 @@ nav {
 		}
 	}
 }
+// section.content {
+// 	margin-top: 100px;
+// }
 </style>
