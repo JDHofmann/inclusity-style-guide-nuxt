@@ -146,15 +146,21 @@ li {
 @include md() {
 	$x-offset: 10px;
 	$y-offset: 10px;
+	.menuItem {
+		position: static;
+	}
+	.submenu-btn-wrapper {
+		// position: absolute;
+		// top: 10px;
+		// right: 10px;
+	}
 	.submenu-btn {
 		span.h3-style {
-			text-align: right;
+			text-align: center;
 			padding: 0 calc(2 * $y-offset);
 			font-size: 18px;
 			&:before {
 				margin: 0 8px 0 0;
-				vertical-align: middle;
-				// border-color: $white;
 			}
 		}
 
@@ -172,9 +178,9 @@ li {
 	}
 	.navigation-dropdown-content {
 		min-width: 100%;
-		position: absolute;
+		// position: absolute;
 		// position: relative;
-		right: 0;
+		// right: 0;
 		width: max-content;
 	}
 	ul {
@@ -182,7 +188,7 @@ li {
 		border: 1px solid $gray-900;
 	}
 	li {
-		text-align: right;
+		text-align: center;
 		// padding: 5px 10px;
 	}
 }

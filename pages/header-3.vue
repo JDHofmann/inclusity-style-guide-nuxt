@@ -130,6 +130,11 @@ header {
 	// position: fixed;
 	top: 0;
 	width: calc(100% - calc(2 * $x-offset));
+	a {
+		height: auto;
+		display: block;
+		position: absolute;
+	}
 	.logo {
 		height: 40px;
 	}
@@ -211,12 +216,15 @@ nav {
 
 @include md() {
 	nav {
+		width: 100%;
 		.mobile-menu-btn {
 			display: none;
 		}
 		ul {
 			display: flex;
-			position: absolute;
+			justify-content: flex-end;
+			// position: absolute;
+			// display: block;
 			top: $y-offset;
 			right: $x-offset;
 			padding-top: 0;
