@@ -8,22 +8,19 @@
 					aria-expanded="false"
 					@click="toggleMenu"
 					class="menu-btn"
-					:class="isActive ? 'close-menu' : 'open-menu'"
+					:class="isShowing ? 'close-menu' : 'open-menu'"
 				>
 					<span></span>
 					<span></span>
 					<span></span>
 				</button>
-				<!-- <button class="hide-menu menu-btn">
-					<span></span>
-					<span></span>
-				</button> -->
 			</div>
 			<div
 				id="pop-out"
 				class="pop-out-content"
 				role="menu"
-				:class="isActive ? 'show-menu-content' : 'hide-menu-content'"
+				v-if="isActive"
+				:class="isShowing ? 'show-menu-content' : 'hide-menu-content'"
 			>
 				<nav>
 					<ul class="section-list">
@@ -86,22 +83,28 @@ export default {
 	layout: 'empty',
 	data() {
 		return {
+			// display none or block
 			isActive: false,
+			// activate show hide animations
+			isShowing: false,
 		}
 	},
+
 	methods: {
 		toggleMenu() {
-			let popOut = document.getElementById('pop-out')
 			if (this.isActive) {
-				this.isActive = !this.isActive
-				popOut.style.display = 'none'
-				return this.isActive
-			} else {
-				popOut.style.display = 'block'
+				// menu is currently showing
+				this.isShowing = false
 				setTimeout(() => {
-					this.isActive = !this.isActive
-					return this.isActive
-				}, '1')
+					this.isActive = this.isShowing
+					console.log('remove from DOM')
+				}, 666)
+			} else {
+				this.isActive = !this.isActive
+
+				setTimeout(() => {
+					this.isShowing = this.isActive
+				}, 1)
 			}
 		},
 	},
@@ -170,30 +173,33 @@ header {
 		}
 	}
 }
-#pop-out {
-	display: none;
-}
+
 .pop-out-content {
 	// alter display property & opacity to show&hide
 	background: $white;
-	// display: block;
+	display: block;
 	height: 100%;
 	left: 0;
 	opacity: 0;
 	position: fixed;
 	top: 60px;
-	// transition: 0.66s ease-in-out;
-	transition: transform 0.35s, opacity 0.35s;
+	transition: 0.33s ease-in-out 0.33s;
 	width: 100%;
 	z-index: 100;
+	@include md {
+		display: flex;
+		align-items: center;
+	}
 	&:after {
-		background: linear-gradient(90deg, $orange-300, $orange-500);
+		// background: linear-gradient(90deg, $orange-300, $orange-500);
+		background: linear-gradient(90deg, $orange-200, $orange-300);
 		bottom: 0;
 		content: '';
 		display: block;
 		height: 100%;
 		left: 0;
-		opacity: 0.5;
+		opacity: 0;
+		transition: 0.33s ease-in-out 0.33s;
 		position: absolute;
 		width: 100%;
 		z-index: 5;
@@ -207,11 +213,13 @@ header {
 		opacity: 0;
 		overflow: auto;
 		position: relative;
-		transition: transform 0.35s, opacity 0.9s;
+		transition: 0.33s ease-in-out;
 		width: 100%;
 		z-index: 10;
 		@include md {
-			width: 500px;
+			width: calc(100% - 20px);
+			margin: 10px;
+			height: 66%;
 		}
 
 		.section-list {
@@ -224,6 +232,8 @@ header {
 			width: 100%;
 			@include md {
 				// width: 300px;
+				display: flex;
+				min-height: 0;
 			}
 			li {
 				list-style-type: none;
@@ -253,6 +263,10 @@ header {
 			.list-item {
 				padding-bottom: 1em;
 				margin: 0;
+				@include md {
+					width: 33.33%;
+					padding-left: 0;
+				}
 			}
 			.sub-list {
 				// padding-left: 2rem;
@@ -288,10 +302,20 @@ header {
 			}
 		}
 	}
+	&.hide-menu-content {
+		// display: none;
+		opacity: 0;
+	}
 	&.show-menu-content {
-		display: block;
 		opacity: 1;
+		transition: 0.33s ease-in-out;
+
+		&:after {
+			opacity: 1;
+			transition: 0.33s ease-in-out;
+		}
 		nav {
+			transition: 0.33s ease-in-out 0.33s;
 			opacity: 1;
 		}
 	}

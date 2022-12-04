@@ -133,7 +133,7 @@ header {
 	a {
 		height: auto;
 		display: block;
-		position: absolute;
+		// position: absolute;
 	}
 	.logo {
 		height: 40px;
@@ -215,6 +215,11 @@ nav {
 }
 
 @include md() {
+	header {
+		a {
+			position: absolute;
+		}
+	}
 	nav {
 		width: 100%;
 		.mobile-menu-btn {

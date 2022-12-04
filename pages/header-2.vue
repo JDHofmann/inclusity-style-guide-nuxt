@@ -139,7 +139,7 @@ nav {
 		border: 1px solid $gray-700;
 		// color: $white;
 		padding: 10px;
-		// position: absolute;
+		position: absolute;
 		top: 10px;
 		right: 10px;
 		left: auto;
