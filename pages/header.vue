@@ -8,24 +8,20 @@
 					aria-expanded="false"
 					@click="toggleMenu"
 					class="menu-btn"
-					:class="isActive ? 'close-menu' : 'open-menu'"
+					:class="isShowing ? 'close-menu' : 'open-menu'"
 				>
 					<span></span>
 					<span></span>
 					<span></span>
 				</button>
-				<!-- <button class="hide-menu menu-btn">
-					<span></span>
-					<span></span>
-				</button> -->
 			</div>
 			<div
 				id="pop-out"
 				class="pop-out-content"
 				role="menu"
-				:class="isActive ? 'show-menu-content' : 'hide-menu-content'"
+				v-if="isActive"
+				:class="isShowing ? 'show-menu-content' : 'hide-menu-content'"
 			>
-				<div class="mask"></div>
 				<nav>
 					<ul class="section-list">
 						<li class="list-item">
@@ -67,8 +63,11 @@
 				</nav>
 			</div>
 		</header>
-		<main style="margin-top: 50px">
-			<div>
+		<section class="content">
+			<p><Nuxt-link to="/">Home</Nuxt-link></p>
+		</section>
+		<main>
+			<div class="content">
 				<p>
 					Sed ut perspiciatis unde omnis iste natus error sit
 					voluptatem accusantium doloremque laudantium, totam rem
@@ -84,18 +83,32 @@ export default {
 	layout: 'empty',
 	data() {
 		return {
+			// display none or block
 			isActive: false,
+			// activate show hide animations
+			isShowing: false,
 		}
 	},
+
 	methods: {
 		toggleMenu() {
-			this.isActive = !this.isActive
-			return this.isActive
+			if (this.isActive) {
+				this.isShowing = false
+				setTimeout(() => {
+					this.isActive = this.isShowing
+				}, 666)
+			} else {
+				this.isActive = !this.isActive
+				setTimeout(() => {
+					this.isShowing = this.isActive
+				}, 1)
+			}
 		},
 	},
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
+@import 'assets/css/mixins';
 header {
 	// outline: 1px solid #000088;
 	background: $white;
@@ -104,9 +117,12 @@ header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 0.65rem;
-		// box-shadow: 0 2px 0 0 $orange-300;
-		// border-bottom: 1px solid $gray-500;
+		padding: 10px;
+		position: fixed;
+		width: calc(100% - 20px);
+		top: 0;
+		// box-shadow: 0 2px 0 0 $orange-700;
+
 		.logo {
 			height: 40px;
 		}
@@ -117,10 +133,8 @@ header {
 			width: 40px;
 			padding: 0.43rem;
 			border-radius: 8px;
-			// display: flex;
-			// flex-direction: column;
-			// justify-content: space-around;
 			$line-height: 1px;
+			transition: 0.5s ease;
 			position: relative;
 			span {
 				display: block;
@@ -141,7 +155,6 @@ header {
 			}
 			&.close-menu {
 				background: $red-100;
-				// justify-content: center;
 				span {
 					&:nth-child(1) {
 						transform: rotate(45deg) translate(0);
@@ -157,42 +170,68 @@ header {
 		}
 	}
 }
-.pop-out-content {
-	position: absolute;
-	// display: none;
-	width: 100%;
-	height: 100vh;
-	height: 0;
-	overflow: hidden;
-	transition: 0.5s ease;
-	max-height: calc(100vh - 40px + (2 * 0.65rem) + 2px);
-	top: calc(40px + (2 * 0.65rem) + 2px);
 
-	.mask {
-		position: absolute;
-		background: rgba($gray-900, 0.5);
+.pop-out-content {
+	// alter display property & opacity to show&hide
+	background: $white;
+	display: block;
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	position: fixed;
+	top: 60px;
+	transition: 0.33s ease-in-out 0.33s;
+	width: 100%;
+	z-index: 100;
+	@include md {
+		display: flex;
+		align-items: center;
+	}
+	&:after {
+		// background: linear-gradient(90deg, $orange-300, $orange-500);
+		background: linear-gradient(90deg, $orange-200, $orange-300);
+		bottom: 0;
+		content: '';
+		display: block;
 		height: 100%;
+		left: 0;
+		opacity: 0;
+		transition: 0.33s ease-in-out 0.33s;
+		position: absolute;
 		width: 100%;
+		z-index: 5;
 	}
 	nav {
 		background: $white;
-		position: absolute;
-		// add margin for larger sizes
-		// margin: 1rem;
+		display: block;
+		height: calc(100% - 60px);
+		margin: 10px 0 0;
+		max-height: $lg;
+		opacity: 0;
+		overflow: auto;
+		position: relative;
+		transition: 0.33s ease-in-out;
 		width: 100%;
-		height: 100%;
-		// height: calc( 100% - (40px + ( 2 * .65rem) + 5px));
-		// height: calc(100% - 65.8px);
+		z-index: 10;
+		@include md {
+			width: calc(100% - 20px);
+			margin: 10px;
+			height: 66%;
+		}
+
 		.section-list {
-			padding: 1.3rem;
-			// outline: 1px solid $red;
+			box-sizing: border-box;
+			max-width: 100%;
+			min-height: 610px;
+			overflow-x: hidden;
+			padding: 20px 0;
 			position: absolute;
-			// med size and up:
-			// top: 50%;
-			left: 50%;
-			width: calc(100% - 2rem);
-			transform: translate(-50%, -50%);
-			transform: translate(-50%);
+			width: 100%;
+			@include md {
+				// width: 300px;
+				display: flex;
+				min-height: 0;
+			}
 			li {
 				list-style-type: none;
 				a {
@@ -205,21 +244,15 @@ header {
 				}
 				h2 {
 					padding-left: 1.6rem;
-					// box-shadow: none;
-					// border-bottom: 1px solid $gray-700;
-					// margin: 1.5em 0 0.5em;
 					margin: 1em 0 0;
 					font-weight: 400;
 					&.heading-underline-orange {
-						// @include heading-underline-orange(2px);
 						box-shadow: none;
 					}
 					&.heading-underline-red {
-						// @include heading-underline-red(2px);
 						box-shadow: none;
 					}
 					&.heading-underline-green {
-						// @include heading-underline-green(2px);
 						box-shadow: none;
 					}
 				}
@@ -227,6 +260,10 @@ header {
 			.list-item {
 				padding-bottom: 1em;
 				margin: 0;
+				@include md {
+					width: 33.33%;
+					padding-left: 0;
+				}
 			}
 			.sub-list {
 				// padding-left: 2rem;
@@ -262,9 +299,25 @@ header {
 			}
 		}
 	}
-	&.show-menu-content {
-		// display: block;
-		height: 100vh;
+	&.hide-menu-content {
+		// display: none;
+		opacity: 0;
 	}
+	&.show-menu-content {
+		opacity: 1;
+		transition: 0.33s ease-in-out;
+
+		&:after {
+			opacity: 1;
+			transition: 0.33s ease-in-out;
+		}
+		nav {
+			transition: 0.33s ease-in-out 0.33s;
+			opacity: 1;
+		}
+	}
+}
+section.content {
+	margin-top: 100px;
 }
 </style>
