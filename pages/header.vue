@@ -93,15 +93,12 @@ export default {
 	methods: {
 		toggleMenu() {
 			if (this.isActive) {
-				// menu is currently showing
 				this.isShowing = false
 				setTimeout(() => {
 					this.isActive = this.isShowing
-					console.log('remove from DOM')
 				}, 666)
 			} else {
 				this.isActive = !this.isActive
-
 				setTimeout(() => {
 					this.isShowing = this.isActive
 				}, 1)

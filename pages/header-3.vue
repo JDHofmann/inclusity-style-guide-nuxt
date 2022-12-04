@@ -5,6 +5,7 @@
 	<div>
 		<header>
 			<a
+				class="logo-wrapper"
 				href="https://www.inclusity.com/"
 				title="go to inclusity.com homepage"
 			>
@@ -23,56 +24,52 @@
 					<span></span>
 				</button>
 				<ul>
-					<li class="menu-section-item">
-						<MenuItem2
-							@toggleSubMenuItem="subMenuActiveItemUpdate"
-							:isActive="subMenuActiveItem === 'what'"
-							name="what"
-							title="What is Inclusity"
-							color="red"
-						>
-							<li>About Us</li>
-							<li>Meet the Team</li>
-							<li>Our Clients</li>
-							<li>Blog</li>
-						</MenuItem2>
-					</li>
-					<li class="menu-section-item">
-						<MenuItem2
-							@toggleSubMenuItem="subMenuActiveItemUpdate"
-							:isActive="subMenuActiveItem === 'services'"
-							name="services"
-							title="Services"
-							color="orange"
-						>
-							<li>Online Services</li>
-							<li>Training Programs</li>
-							<li>Inclusion Consulting</li>
-							<li>Coaching</li>
-							<li>Presentations</li>
-						</MenuItem2>
-					</li>
-					<li class="menu-section-item">
-						<MenuItem2
-							@toggleSubMenuItem="subMenuActiveItemUpdate"
-							:isActive="subMenuActiveItem === 'contact'"
-							name="contact"
-							title="Contact"
-							color="green"
-						>
-							<li>
-								<a href="https://www.inclusity.com/contact/"
-									>Send Us a Message</a
-								>
-							</li>
-							<li>
-								<a
-									href="https://www.instagram.com/inclusity.llc/"
-									>Email Us Here</a
-								>
-							</li>
-						</MenuItem2>
-					</li>
+					<MenuItem2
+						class="menu-section-item"
+						@toggleSubMenuItem="subMenuActiveItemUpdate"
+						:isActive="subMenuActiveItem === 'what'"
+						name="what"
+						title="What is Inclusity"
+						gridColumn="one"
+					>
+						<li>About Us</li>
+						<li>Meet the Team</li>
+						<li>Our Clients</li>
+						<li>Blog</li>
+					</MenuItem2>
+					<MenuItem2
+						class="menu-section-item"
+						@toggleSubMenuItem="subMenuActiveItemUpdate"
+						:isActive="subMenuActiveItem === 'services'"
+						name="services"
+						title="Services"
+						gridColumn="two"
+					>
+						<li>Online Services</li>
+						<li>Training Programs</li>
+						<li>Inclusion Consulting</li>
+						<li>Coaching</li>
+						<li>Presentations</li>
+					</MenuItem2>
+					<MenuItem2
+						class="menu-section-item"
+						@toggleSubMenuItem="subMenuActiveItemUpdate"
+						:isActive="subMenuActiveItem === 'contact'"
+						name="contact"
+						title="Contact"
+						gridColumn="three"
+					>
+						<li>
+							<a href="https://www.inclusity.com/contact/"
+								>Send Us a Message</a
+							>
+						</li>
+						<li>
+							<a href="https://www.instagram.com/inclusity.llc/"
+								>Email Us Here</a
+							>
+						</li>
+					</MenuItem2>
 				</ul>
 			</nav>
 		</header>
@@ -126,20 +123,25 @@ $x-offset: 10px;
 $y-offset: 10px;
 header {
 	background: $white;
+	display: grid;
+	grid-template-columns: repeat(9, 1fr);
 	padding: $x-offset $y-offset;
-	// position: fixed;
-	top: 0;
 	width: calc(100% - calc(2 * $x-offset));
-	a {
+	.logo-wrapper {
+		grid-column: 1 / span 2;
+		grid-row: 1;
 		height: auto;
 		display: block;
-		// position: absolute;
-	}
-	.logo {
-		height: 40px;
+		.logo {
+			height: 40px;
+		}
 	}
 }
 nav {
+	grid-column: 1 / span 9;
+
+	display: grid;
+	grid-template-columns: subgrid;
 	.mobile-menu-btn {
 		border: 1px solid $gray-700;
 		padding: $x-offset $y-offset;
@@ -175,6 +177,8 @@ nav {
 	ul {
 		display: none;
 		padding-top: $y-offset;
+		grid-column: 1 / span 9;
+		grid-template-columns: subgrid;
 	}
 	&.showing-menu-content {
 		.mobile-menu-btn {
@@ -199,6 +203,9 @@ nav {
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	display: grid;
+	grid-column: 1 / span 9;
+	grid-template-columns: subgrid;
 }
 
 @include sm() {
@@ -209,30 +216,24 @@ nav {
 	}
 	nav.showing-menu-content {
 		ul {
-			display: block;
+			display: grid;
 		}
 	}
 }
 
 @include md() {
-	header {
-		a {
-			position: absolute;
-		}
-	}
 	nav {
 		width: 100%;
+		grid-row: 1;
 		.mobile-menu-btn {
 			display: none;
 		}
 		ul {
-			display: flex;
-			justify-content: flex-end;
-			// position: absolute;
-			// display: block;
 			top: $y-offset;
 			right: $x-offset;
 			padding-top: 0;
+			display: grid;
+
 			.menu-section-item {
 				& + .menu-section-item {
 					margin-left: 5px;
@@ -240,9 +241,5 @@ nav {
 			}
 		}
 	}
-}
-
-.content {
-	// margin-top: 100px;
 }
 </style>
