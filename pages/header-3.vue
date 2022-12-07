@@ -138,7 +138,7 @@ header {
 	}
 }
 nav {
-	grid-column: 1 / span 9;
+	grid-column: 1 / span all;
 
 	display: grid;
 	grid-template-columns: subgrid;
@@ -177,7 +177,7 @@ nav {
 	ul {
 		display: none;
 		padding-top: $y-offset;
-		grid-column: 1 / span 9;
+		grid-column: 1 / span all;
 		grid-template-columns: subgrid;
 	}
 	&.showing-menu-content {
@@ -204,7 +204,7 @@ nav {
 	padding: 0;
 	margin: 0;
 	display: grid;
-	grid-column: 1 / span 9;
+	grid-column: 1 / span all;
 	grid-template-columns: subgrid;
 }
 
