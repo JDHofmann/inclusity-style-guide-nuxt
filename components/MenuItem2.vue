@@ -138,13 +138,16 @@ li {
 	.menuItem {
 		// position: static;
 		display: grid;
-		grid-column: 1 / span 9;
+		grid-column: 1 / span all;
 		grid-template-columns: subgrid;
+		grid-template-columns: repeat(9, 1fr);
+		pointer-events: none;
 		grid-row: 1;
 		gap: 5px;
 	}
 	.submenu-btn-wrapper {
 		grid-column: span 2;
+		pointer-events: auto;
 		// grid-row: 1;
 		&.one {
 			grid-column: 4 / span 2;
@@ -160,7 +163,7 @@ li {
 	.submenu-btn {
 		span.h3-style {
 			text-align: center;
-			padding: 0 calc(2 * $y-offset);
+			// padding: 0 calc(2 * $y-offset);
 			font-size: 18px;
 			display: block;
 			width: 100%;
@@ -180,11 +183,6 @@ li {
 			}
 		}
 	}
-	// .navigation-dropdown-content {
-	// 	grid-column: span 9;
-	// 	min-width: 100%;
-	// 	width: max-content;
-	// }
 	ul {
 		padding: 0;
 		border: 1px solid $gray-900;
@@ -192,6 +190,11 @@ li {
 	}
 	li {
 		text-align: center;
+	}
+}
+@include lg() {
+	.navigation-dropdown-content {
+		grid-column: 4 / span 6;
 	}
 }
 </style>

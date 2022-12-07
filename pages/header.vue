@@ -217,6 +217,8 @@ header {
 			width: calc(100% - 20px);
 			margin: 10px;
 			height: 66%;
+			display: flex;
+			align-items: center;
 		}
 
 		.section-list {
@@ -244,6 +246,7 @@ header {
 				}
 				h2 {
 					padding-left: 1.6rem;
+					padding-left: 3rem;
 					margin: 1em 0 0;
 					font-weight: 400;
 					&.heading-underline-orange {
