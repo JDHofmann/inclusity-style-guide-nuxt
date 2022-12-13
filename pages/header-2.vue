@@ -71,11 +71,21 @@
 									>Email Us Here</a
 								>
 							</li>
+							<li>
+								<a
+									href="https://www.inclusity.com/join-inclusity/"
+									>Join Inclusity</a
+								>
+							</li>
 						</MenuItem>
 					</li>
 				</ul>
 			</nav>
 		</header>
+		<section class="content">
+			<h2>Quick Link</h2>
+			<p><Nuxt-link to="/" class="inline-link">Home Page</Nuxt-link></p>
+		</section>
 		<div class="content">
 			<h2>Demo content</h2>
 			<p>
@@ -85,12 +95,9 @@
 				vitae dicta sunt explicabo.
 			</p>
 		</div>
-		<section class="content">
-			<h2>Quick Links</h2>
-			<p><Nuxt-link to="/">Home</Nuxt-link></p>
-		</section>
 	</div>
 </template>
+
 <script>
 export default {
 	layout: 'empty',
@@ -222,7 +229,6 @@ nav {
 			display: none;
 		}
 		ul {
-			// display: block;
 			display: flex;
 			position: absolute;
 			top: 10px;
@@ -236,7 +242,4 @@ nav {
 		}
 	}
 }
-// section.content {
-// 	margin-top: 100px;
-// }
 </style>
