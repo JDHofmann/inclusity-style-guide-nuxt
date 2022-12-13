@@ -71,6 +71,12 @@
 									>Email Us Here</a
 								>
 							</li>
+							<li>
+								<a
+									href="https://www.inclusity.com/join-inclusity/"
+									>Join Inclusity</a
+								>
+							</li>
 						</MenuItem>
 					</li>
 				</ul>
@@ -91,6 +97,7 @@
 		</section>
 	</div>
 </template>
+
 <script>
 export default {
 	layout: 'empty',
@@ -222,7 +229,6 @@ nav {
 			display: none;
 		}
 		ul {
-			// display: block;
 			display: flex;
 			position: absolute;
 			top: 10px;
@@ -236,7 +242,4 @@ nav {
 		}
 	}
 }
-// section.content {
-// 	margin-top: 100px;
-// }
 </style>

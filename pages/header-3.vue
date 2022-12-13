@@ -69,6 +69,11 @@
 								>Email Us Here</a
 							>
 						</li>
+						<li>
+							<a href="https://www.inclusity.com/join-inclusity/"
+								>Join Inclusity</a
+							>
+						</li>
 					</MenuItem2>
 				</ul>
 			</nav>

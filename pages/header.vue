@@ -13,13 +13,16 @@
 					<span></span>
 					<span></span>
 					<span></span>
+					<span class="menu-list">What is Inclusity</span>
+					<span class="menu-list">Services</span>
+					<span class="menu-list">Contact</span>
 				</button>
 			</div>
 			<div
 				id="pop-out"
 				class="pop-out-content"
-				role="menu"
 				v-if="isActive"
+				role="menu"
 				:class="isShowing ? 'show-menu-content' : 'hide-menu-content'"
 			>
 				<nav>
@@ -55,6 +58,12 @@
 									<a
 										href="https://www.instagram.com/inclusity.llc/"
 										>Email Us Here</a
+									>
+								</li>
+								<li>
+									<a
+										href="https://www.inclusity.com/join-inclusity/"
+										>Join Inclusity</a
 									>
 								</li>
 							</ul>
@@ -112,59 +121,61 @@ export default {
 header {
 	// outline: 1px solid #000088;
 	background: $white;
+}
+.static-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	position: fixed;
+	width: calc(100% - 20px);
+	top: 0;
+	// box-shadow: 0 2px 0 0 $orange-700;
 
-	.static-content {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 10px;
-		position: fixed;
-		width: calc(100% - 20px);
-		top: 0;
-		// box-shadow: 0 2px 0 0 $orange-700;
-
-		.logo {
-			height: 40px;
-		}
-		.menu-btn {
-			border: 1px solid $gray-700;
-			// background: $orange-500;
-			height: 40px;
-			width: 40px;
-			padding: 0.43rem;
-			border-radius: 8px;
-			$line-height: 1px;
+	.logo {
+		height: 40px;
+	}
+	.menu-btn {
+		border: 1px solid $gray-700;
+		// background: $orange-500;
+		height: 40px;
+		width: 40px;
+		padding: 0.43rem;
+		border-radius: 8px;
+		$line-height: 1px;
+		transition: 0.5s ease;
+		position: relative;
+		span:not(.menu-list) {
+			display: block;
+			height: $line-height;
+			width: 25px;
+			line-height: 0px;
+			background: $gray-700;
+			// background: $white;
+			position: absolute;
+			top: 50%;
 			transition: 0.5s ease;
-			position: relative;
-			span {
-				display: block;
-				height: $line-height;
-				width: 25px;
-				line-height: 0px;
-				background: $gray-700;
-				// background: $white;
-				position: absolute;
-				top: 50%;
-				transition: 0.5s ease;
+			&:nth-child(1) {
+				transform: translateY(-8px);
+			}
+			&:nth-child(3) {
+				transform: translateY(8px);
+			}
+		}
+		.menu-list {
+			display: none;
+		}
+		&.close-menu {
+			background: $red-100;
+			span:not(.menu-list) {
 				&:nth-child(1) {
-					transform: translateY(-8px);
+					transform: rotate(45deg) translate(0);
+				}
+				&:nth-child(2) {
+					opacity: 0;
 				}
 				&:nth-child(3) {
-					transform: translateY(8px);
-				}
-			}
-			&.close-menu {
-				background: $red-100;
-				span {
-					&:nth-child(1) {
-						transform: rotate(45deg) translate(0);
-					}
-					&:nth-child(2) {
-						opacity: 0;
-					}
-					&:nth-child(3) {
-						transform: rotate(-45deg) translate(0);
-					}
+					transform: rotate(-45deg) translate(0);
 				}
 			}
 		}
@@ -317,6 +328,51 @@ header {
 		nav {
 			transition: 0.33s ease-in-out 0.33s;
 			opacity: 1;
+		}
+	}
+}
+@include md() {
+	.static-content {
+		.menu-btn {
+			width: auto;
+			display: flex;
+			gap: 5px;
+			border: none;
+			padding: 0;
+			span:not(.menu-list) {
+				display: none;
+			}
+			.menu-list {
+				// display: block;
+				// width: 100%;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				border-radius: 5px;
+				padding: 0 20px;
+				font-size: 18px;
+				text-align: center;
+				margin-top: 0;
+				color: #171717;
+				&:nth-child(4) {
+					background: $red-400;
+					&:hover {
+						background: $red-300;
+					}
+				}
+				&:nth-child(5) {
+					background: $orange-400;
+					&:hover {
+						background: $orange-300;
+					}
+				}
+				&:nth-child(6) {
+					background: $green-400;
+					&:hover {
+						background: $green-300;
+					}
+				}
+			}
 		}
 	}
 }
