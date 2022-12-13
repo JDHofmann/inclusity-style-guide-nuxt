@@ -73,18 +73,18 @@
 			</div>
 		</header>
 		<section class="content">
-			<p><Nuxt-link to="/">Home</Nuxt-link></p>
+			<h2>Quick Link</h2>
+			<p><Nuxt-link to="/" class="inline-link">Home Page</Nuxt-link></p>
 		</section>
-		<main>
-			<div class="content">
-				<p>
-					Sed ut perspiciatis unde omnis iste natus error sit
-					voluptatem accusantium doloremque laudantium, totam rem
-					aperiam, eaque ipsa quae ab illo inventore veritatis et
-					quasi architecto beatae vitae dicta sunt explicabo.
-				</p>
-			</div>
-		</main>
+		<div class="content">
+			<h2>Demo content</h2>
+			<p>
+				Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+				accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+				quae ab illo inventore veritatis et quasi architecto beatae
+				vitae dicta sunt explicabo.
+			</p>
+		</div>
 	</div>
 </template>
 <script>

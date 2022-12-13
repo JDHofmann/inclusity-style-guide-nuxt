@@ -82,6 +82,10 @@
 				</ul>
 			</nav>
 		</header>
+		<section class="content">
+			<h2>Quick Link</h2>
+			<p><Nuxt-link to="/" class="inline-link">Home Page</Nuxt-link></p>
+		</section>
 		<div class="content">
 			<h2>Demo content</h2>
 			<p>
@@ -91,10 +95,6 @@
 				vitae dicta sunt explicabo.
 			</p>
 		</div>
-		<section class="content">
-			<h2>Quick Links</h2>
-			<p><Nuxt-link to="/">Home</Nuxt-link></p>
-		</section>
 	</div>
 </template>
 
